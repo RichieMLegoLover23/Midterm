@@ -1,0 +1,80 @@
+#Project 1 and 2
+
+# create the coffee file if it does not exist
+with open('coffee.txt', 'w') as file:
+    file.write("Description,ProdNum,Price\n")
+
+# open the coffee file for reading
+with open('coffee.txt', 'r') as file:
+    # read the header line
+    header = file.readline().strip().split(',')
+    print("{:<25} {:<10} {}".format(header[0], header[1], header[2]))
+
+    # read the remaining lines
+    for line in file:
+        # split the line into its fields
+        fields = line.strip().split(',')
+        # display the fields
+        print("{:<25} {:<10} ${:.2f}".format(fields[0], fields[1], float(fields[2])))
+
+# prompt user for input
+fat_grams = float(input("Enter the number of fat grams: "))
+
+# calculate calories from fat
+calories_from_fat = fat_grams * 9
+
+# display the result
+print("Calories from fat:", calories_from_fat)
+
+# prompt user for input
+carb_grams = float(input("Enter the number of carb grams: "))
+
+# calculate calories from carbs
+calories_from_carbs = carb_grams * 4
+
+# display the result
+print("Calories from carbs:", calories_from_carbs)
+
+# prompt user for new coffee entry
+description = input("Enter your favorite coffee brand: ")
+prod_num = '99-8888'
+price = 9.88
+
+# write new coffee entry to file
+with open('coffee.txt', 'a') as file:
+    file.write(f"{description},{prod_num},{price:.2f}\n")
+
+# read the updated coffee file
+with open('coffee.txt', 'r') as file:
+    # read the header line and print it
+    header = file.readline().strip().split(',')
+    print("{:<25} {:<10} {}".format(header[0], header[1], header[2]))
+
+    # read the remaining lines and print them
+    for line in file:
+        fields = line.strip().split(',')
+        print("{:<25} {:<10} ${:.2f}".format(fields[0], fields[1], float(fields[2])))
+
+# create the expenses file if it does not exist
+with open('expenses.txt', 'w') as file:
+    file.write("Category,Amount\n")
+
+# prompt user for input and write to file
+categories = ['Rent', 'Gas', 'Food', 'Clothing', 'Car payment']
+for category in categories:
+    amount = input(f"Enter the amount for {category}: ")
+    with open('expenses.txt', 'a') as file:
+        file.write(f"{category},{amount}\n")
+
+# read the expenses file and print the content
+with open('expenses.txt', 'r') as file:
+    # read the header line and print it
+    header = file.readline().strip().split(',')
+    print("{:<15} {:<10}".format(header[0], header[1]))
+
+    # read the remaining lines and print them
+    for line in file:
+        fields = line.strip().split(',')
+        print("{:<15} ${:<10}".format(fields[0], fields[1]))
+
+

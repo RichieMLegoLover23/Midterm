@@ -1,0 +1,6 @@
+Category,Amount
+Rent,899
+Gas,888
+Food,889
+Clothing,868
+Car payment,7667
